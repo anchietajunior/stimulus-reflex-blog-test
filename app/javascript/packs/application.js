@@ -19,6 +19,8 @@ require("channels")
 require("trix")
 require("@rails/actiontext")
 
+import Sortable from 'sortablejs'
+
 // Stimulus and Stimulus Reflex configurations
 
 import { Application } from 'stimulus'
@@ -48,10 +50,14 @@ document.addEventListener('turbolinks:load', () => {
 
   document.addEventListener('click', () => {
     if (!event.target.matches('.cancel')) return;
+    event.preventDefault();
 
     let element = event.target.closest('.paragraph-form')
 
     element.classList.add('d-none')
     element.previousElementSibling.classList.remove('d-none')
   })
+
+  let elements = document.getElementById('elements')
+  Sortable.create(elements, { animation: 150 })
 });

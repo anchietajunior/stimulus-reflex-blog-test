@@ -1,24 +1,33 @@
-# README
+# Blog with stimulus Reflex
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Run the project
 
-Things you may want to cover:
+## Clone it
 
-* Ruby version
+```sh
+git clone git@github.com:anchietajuniorblog-with-stimulus-reflex.git
+```
 
-* System dependencies
+## Install dependencies
 
-* Configuration
+```sh
+bundle install
+```
 
-* Database creation
+## Create and migrate database
 
-* Database initialization
+```sh
+rails db:create && rails db:migrate
+```
 
-* How to run the test suite
+## Run Server
 
-* Services (job queues, cache servers, search engines, etc.)
+```sh
+rails server
+```
 
-* Deployment instructions
+## Access on your browser
 
-* ...
+Check out the link ***http://localhost:3000/posts***
+
+## Be happy. :)

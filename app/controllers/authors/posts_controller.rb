@@ -1,22 +1,20 @@
 class Authors::PostsController < AuthorsController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all
-  end
-
-  def show
+    @posts = current_author.posts
   end
 
   def new
-    @post = Post.new
+    @post = current_author.posts.build
   end
 
   def edit
+    @element = @post.elements.build
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_author.posts.build(post_params)
 
     if @post.save
       redirect_to @post, notice: 'Post was successfully created.'
@@ -40,10 +38,10 @@ class Authors::PostsController < AuthorsController
 
   private
     def set_post
-      @post = Post.find(params[:id])
+      @post = current_author.posts.find(params[:id])
     end
 
     def post_params
-      params.require(:post).permit(:title, :description, :published, :published_at, :author_id)
+      params.require(:post).permit(:title, :description)
     end
 end

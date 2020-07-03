@@ -31,12 +31,16 @@
     <div class="mb-3">
       <%= form_with(model: [@post, @element], html: { class: 'float-left mr-2' }) do |form| %>
         <%= form.hidden_field :element_type, value: 'paragraph' %>
-        <%= form.submit "Paragraph", class: "btn btn-dark" %>
+        <%= button_tag(type: 'submit', class: 'btn btn-dark') do %>
+          <i class="fas fa-paragraph"></i>
+        <% end %>
       <% end %>
       
       <%= form_with(model: [@post, @element]) do |form| %>
         <%= form.hidden_field :element_type, value: 'image' %>
-        <%= form.submit "Image", class: "btn btn-dark" %>
+        <%= button_tag(type: 'submit', class: 'btn btn-dark') do %>
+          <i class="fas fa-images"></i>
+        <% end %>
       <% end %>
     </div>
 

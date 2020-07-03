@@ -19,7 +19,23 @@ require("channels")
 require("trix")
 require("@rails/actiontext")
 
+// Stimulus and Stimulus Reflex configurations
+
+import { Application } from 'stimulus'
+import { definitionsFromContext } from 'stimulus/webpack-helpers'
+import StimulusReflex from 'stimulus_reflex'
+import consumer from '../channels/consumer'
+
+const application = Application.start()
+const context = require.context('controllers', true, /_controller\.js$/)
+application.load(definitionsFromContext(context))
+StimulusReflex.initialize(application, { consumer })
+
+// Import styles from webpacker
+
 import '../stylesheets/application'
+
+// Add post events after turbolinks is loaded
 
 document.addEventListener('turbolinks:load', () => {
   document.addEventListener('click', () => {
@@ -38,4 +54,4 @@ document.addEventListener('turbolinks:load', () => {
     element.classList.add('d-none')
     element.previousElementSibling.classList.remove('d-none')
   })
-})
+});

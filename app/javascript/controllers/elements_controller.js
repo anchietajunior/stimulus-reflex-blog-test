@@ -7,9 +7,7 @@ export default class extends ApplicationController {
     let elementItems = Array.from(document.getElementsByClassName('element-item'))
     let elements = elementItems.map((element, index) => {
       return { id: element.dataset.id, position: index + 1 }
-    }) 
-
-    console.log(elements)
+    })
 
     element.dataset.elements = JSON.stringify(elements)
     this.stimulate('ElementsReflex#sort', element)
